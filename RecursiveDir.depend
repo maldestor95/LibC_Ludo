@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1499752584 source:c:\dev\dev_c\recursivedir\main.c
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+	<sys/stat.h>
+	<strings.h>
+
