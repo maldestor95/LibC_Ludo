@@ -1,5 +1,18 @@
 # depslib dependency file v1.0
-1499752584 source:c:\dev\dev_c\recursivedir\main.c
+1499900789 source:c:\dev\dev_c\recursivedir\main.c
+	<stdio.h>
+	<stdlib.h>
+	<dirent.h>
+	<sys/stat.h>
+	<strings.h>
+	"lib/RecursiveDir.h"
+
+1499892608 source:c:\dev\dev_c\recursivedir\recursivedir.c
+
+1499901525 source:c:\dev\dev_c\recursivedir\lib\recursivedir.c
+	"RecursiveDir.h"
+
+1499900656 c:\dev\dev_c\recursivedir\lib\recursivedir.h
 	<stdio.h>
 	<stdlib.h>
 	<dirent.h>
