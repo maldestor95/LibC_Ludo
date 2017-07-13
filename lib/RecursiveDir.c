@@ -75,6 +75,8 @@ R_Directory *recursivedir2( R_Directory *Rdir,char *path){
     strcpy(Rdir->cwd,path);
     Rdir->nb_files=0;
     Rdir->nb_dir=0;
+    Rdir->tfiles=malloc(sizeof(char *));
+    Rdir->tfiles=NULL;
     dir=opendir(path);
 
     while( (ptrdir=readdir(dir))!=NULL){
@@ -96,8 +98,34 @@ R_Directory *recursivedir2( R_Directory *Rdir,char *path){
                 break;
 
                case S_IFREG: //this is a regular file
-                   Rdir->nb_files++;
                    //TODO assignment of the file to the table
+                    /*
+                    char **t_mot;
+                    size_t n_mot;
+
+                    printf("combien d'elements:");
+                    n_mot=5;//scanf("%d",&n_el);
+                    t_mot=malloc(n_mot*sizeof(char *));
+                    for (int i=0;i<n_mot;i++)
+                    {
+                        t_mot[i]=malloc(80*sizeof(char));
+                        strcpy(t_mot[i],"a\0");
+                        printf("%d -- %s\n",i,t_mot[i]);
+                    }
+
+                    n_mot=10;//scanf("%d",&n_el);
+                    *t_mot=realloc(t_mot,n_mot*sizeof(char *));
+                    for (int i=5;i<n_mot;i++)
+                    {
+                        t_mot[i]=malloc(80*sizeof(char));
+                        strcpy(t_mot[i],"b\0");
+                        printf("%d -- %s\n",i,t_mot[i]);
+                    }
+                   */
+                   Rdir->tfiles = realloc( Rdir->tfiles , sizeof(char *)); // addition of a new char in memory
+                   Rdir->tfiles[Rdir->nb_files]=malloc(MAX_PATH_LENGTH*sizeof(char));
+                   strcpy(Rdir->tfiles[Rdir->nb_files],ptrdir->d_name);
+                   Rdir->nb_files++;
                    //Rdir->tfiles=realloc(Rdir->tfiles,Rdir->nb_files*sizeof(Rdir->tfiles[0]));
                    //strcpy(Rdir->tfiles[Rdir->nb_files-1],ptrdir->d_name);
                    printf("%s -- %d\n",ptrdir->d_name,Rdir->nb_files);
