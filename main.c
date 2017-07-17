@@ -27,9 +27,8 @@ int main(){
     printf("Recursive Dir!\n");
 
     R_Directory *Rdir;
-    //Rdir=recursivedir2("c:\\temp\\");
+    Rdir=recursivedir2("c:\\temp\\");
     //Rdir=recursivedir2("C:\\dev\\dev_C\\RecursiveDir\\");
-    Rdir=recursivedir2("C:\\dev\\");
     print_Rdir(Rdir);
 
 

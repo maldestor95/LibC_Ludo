@@ -57,10 +57,10 @@ int print_Rdir( R_Directory *Rdir){
     int nbfiles=Rdir->nb_files;
     int nbdir=Rdir->nb_dir;
     while (nbfiles--){
-       //printf("%s\n",*(Rdir->tfiles++));
+       printf("%s\n",*(Rdir->tfiles++));
     }
     while (nbdir--){
-        //print_Rdir(Rdir->R_Directory[nbdir]);
+        print_Rdir(Rdir->R_Directory[nbdir]);
     }
     return 0;
 }
@@ -108,19 +108,22 @@ R_Directory *recursivedir2(char *path){
         {
             switch (stat_buffer.st_mode & S_IFMT) {
                case S_IFDIR: //this is a directory: go recursive
+
                    strcpy(newfolder,Rdir->cwd);
                    strcat(newfolder,ptrdir->d_name);
                    strcat(newfolder,"\\");
+
                    Rdir->nb_dir++;
                    Rdir->R_Directory=realloc(Rdir->R_Directory,Rdir->nb_dir*sizeof(R_Directory *));
                    Rdir->R_Directory[Rdir->nb_dir-1]=recursivedir2(newfolder);
+
                    break;
 
                case S_IFIFO:  printf("%s\n",MyStr);
                 break;
 
-               case S_IFREG: //this is a regular file
-                    Rdir->tfiles = realloc( Rdir->tfiles , (Rdir->nb_files+1)*sizeof(char *)); // addition of a new char in memory
+               case S_IFREG: //this is a regular file :addition of a new char in memory
+                    Rdir->tfiles = realloc( Rdir->tfiles , (Rdir->nb_files+1)*sizeof(char *));
                     Rdir->tfiles[Rdir->nb_files]=malloc(MAX_PATH_LENGTH*sizeof(char));
                     strcpy(Rdir->tfiles[Rdir->nb_files],ptrdir->d_name);
                     Rdir->nb_files++;
