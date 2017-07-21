@@ -1,5 +1,7 @@
-# Makefile HELLO
- 
+# Makefile RecursiveDIR
+
+# Destination file
+EXE=exou
 # Paths
 DSRC = src
 DINC = lib
@@ -18,13 +20,14 @@ RM = del
 
 #Rebuild all target
 all:Recursivedir.c
-	$(CC)  main.c $(CFLAGS) $(DOBJ)/$(subst .c,.o,$^)
+	$(CC)  main.c $(CFLAGS) $(DOBJ)/$(subst .c,.o,$^) -o $(DEXE)/$(EXE)
 
 Recursivedir.c:
 	$(CC) -c lib/$@ $(CFLAGS) -o $(DOBJ)/$(subst .c,.o,$@)
-
+Test:
+	$(DEXE)/$(EXE)
 clean:
 	cd $(DOBJ) && \
 	$(RM) *.o
 	cd $(DEXE) && \
-	$(RM) *.* 
+	$(RM) *.* /S /F
