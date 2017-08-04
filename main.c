@@ -13,6 +13,12 @@
 #include <strings.h>
 #include "lib/RecursiveDir.h"
 
+//CMOCKA includes
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include "cmocka.h"
+
 
 
 

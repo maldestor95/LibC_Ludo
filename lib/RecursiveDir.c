@@ -75,7 +75,9 @@ R_Directory *recursivedir2(char *path){
  */
     struct dirent *ptrdir;
     DIR *dir;
-    static nbcall =0;
+
+    //counter about number of recursive directories
+    static int nbcall =0;
     nbcall ++;
 
     R_Directory *Rdir;
@@ -90,7 +92,7 @@ R_Directory *recursivedir2(char *path){
     Rdir->R_Directory=malloc(sizeof(R_Directory *));
     Rdir->R_Directory=NULL;
 
-    R_Directory *newdir;
+    //R_Directory *newdir;
     char newfolder[MAX_PATH_LENGTH];
 
     //analysis of the directory
